@@ -1,19 +1,21 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Command;
 
-namespace Command
+namespace UnitTestProject1
 {
-    class Program
+    [TestClass]
+    public class UnitTest1
     {
-        static void Main(string[] args)
+        [TestMethod]
+        public void TestMethod1()
         {
+            decimal resultAmount =0;
+            decimal expectedAmount =30;
             var bank = new Bank();
             bank.Deposit(50);
-            bank.Deposit(50);
-            bank.Withdraw(75);
+            bank.Deposit(10);
+            bank.Withdraw(25);
             bank.Deposit(25);
             bank.Withdraw(20);
             bank.CancelLastTransaction();
@@ -25,7 +27,11 @@ namespace Command
             bank.CancelLastTransaction();
             bank.CancelLastTransaction();
             bank.CancelLastTransaction();
-            Console.ReadLine();
+            resultAmount = bank.BalanceInquiry();
+            if (bank.BalanceInquiry() == expectedAmount)
+            {
+                
+            }
         }
     }
 }
